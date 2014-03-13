@@ -1,5 +1,5 @@
 <?php
-namespace Album;
+namespace Contactus;
 
 class Module
 {
