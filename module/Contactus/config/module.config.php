@@ -27,9 +27,16 @@ return array(
     ),
 
 
+
     'view_manager' => array(
         'template_path_stack' => array(
-            'contactus' => __DIR__ . '/../view',
+            'contactus' => __DIR__ . '/../view' ,
         ),
+        'template_map' => array(
+            'contactus/header'           => getcwd() . '/module/Contactus/view/contactus/contactus/header.phtml',
+            'contactus/footer'           => getcwd() . '/module/Contactus/view/contactus/contactus/footer.phtml',
+        ),
+
     ),
 );
+

@@ -13,7 +13,7 @@ class ContactusController extends AbstractActionController
 
     public function sentAction()
     {
-
+        return 'sent';
     }
 
     public function editAction()
@@ -23,4 +23,5 @@ class ContactusController extends AbstractActionController
     public function deleteAction()
     {
     }
+
 }
