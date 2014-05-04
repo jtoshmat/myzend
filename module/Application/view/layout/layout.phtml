@@ -1,77 +1,28 @@
-<?php
-echo $this->doctype();
-echo '
-<!--[if IE 8]><html class="ie ie8"> <![endif]-->
-<!--[if IE 9]><html class="ie ie9"> <![endif]-->
-<!--[if gt IE 9]><!-->
-<html>
-<!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
 <head>
-<meta charset="utf-8">';
-echo $this->headTitle('Zend '. $this->translate('PHP Certified Developer'))->setSeparator(' - ')->setAutoEscape(false);
-echo "\n";
-echo $this->headMeta()
-       ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
-       ->appendName('viewport', 'width=device-width, initial-scale=1.0')
-       ->appendName('keywords', 'WHAAAAAAAAAAAt')
-       ->appendName('description', 'description')
-       ->appendName('framework', 'Zend Framework 2')
-       ->appendName('author', 'Jon Toshmatov');
-    echo "\n";
-//CSS libs
-    echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-        ->prependStylesheet($this->basePath() . 'http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light')
-        ->prependStylesheet($this->basePath() . 'css/bootstrap.css')
-        ->prependStylesheet($this->basePath() . 'css/fonts/font-awesome/css/font-awesome.css')
-        ->prependStylesheet($this->basePath() . 'vendor/owl-carousel/owl.carousel.css')
-        ->prependStylesheet($this->basePath() . 'vendor/owl-carousel/owl.theme.css')
-        ->prependStylesheet($this->basePath() . 'vendor/magnific-popup/magnific-popup.css')
-        ->prependStylesheet($this->basePath() . 'css/theme.css')
-        ->prependStylesheet($this->basePath() . 'css/theme-elements.css')
-        ->prependStylesheet($this->basePath() . 'css/theme-animate.css')
-        ->prependStylesheet($this->basePath() . 'css/skins/blue.css',array('media'=>''))
-        ->prependStylesheet($this->basePath() . 'css/custom.css',array('media'=>''))
-        ->prependStylesheet($this->basePath() . 'css/theme-responsive.css',array('media'=>''));
-        echo "\n";
-        echo "<!--[if IE]>";
-        echo $this->headLink()
-        ->prependStylesheet($this->basePath() . 'css/ie.css', 'text/javascript');
-        echo "<![endif]-->";
-        echo "\n";
-//Javascript libs
-
-echo $this->headScript()
-    ->prependFile($this->basePath() . 'vendor/modernizr.js', 'text/javascript');
-echo "<!--[if lte IE 8]>";
-echo $this->headScript()
-    ->prependFile($this->basePath() . 'vendor/respond.js', 'text/javascript');
-echo "<![endif]-->";
-echo '</head>
-<body>
-<div class="body">';
-echo $this->partial('layout/header', array('vr' => 'zf2'));
-echo '<div class="main" role="main">';
-echo $this->layout()->content;
-echo '</div>';
-echo $this->partial('layout/footer', array('vr' => 'zf2'));
-echo '</div>';
-//Javascript lib 2
-echo $this->headScript()
-    ->prependFile($this->basePath() . 'vendor/jquery.js', 'text/javascript')
-    ->prependFile($this->basePath() . 'js/plugins.js', 'text/javascript')
-    ->prependFile($this->basePath() . 'vendor/jquery.easing.js', 'text/javascript')
-    ->prependFile($this->basePath() . 'vendor/jquery.appear.js', 'text/javascript')
-    ->prependFile($this->basePath() . 'vendor/jquery.cookie.js', 'text/javascript')
-    ->prependFile($this->basePath() . 'vendor/bootstrap.js', 'text/javascript')
-    ->prependFile($this->basePath() . 'vendor/twitterjs/twitter.js', 'text/javascript')
-    ->prependFile($this->basePath() . 'vendor/owl-carousel/owl.carousel.js', 'text/javascript')
-    ->prependFile($this->basePath() . 'vendor/jflickrfeed/jflickrfeed.js', 'text/javascript')
-    ->prependFile($this->basePath() . 'vendor/magnific-popup/magnific-popup.js', 'text/javascript')
-    ->prependFile($this->basePath() . 'vendor/jquery.validate.js', 'text/javascript')
-    ->prependFile($this->basePath() . 'js/theme.js', 'text/javascript')
-    ->prependFile($this->basePath() . 'js/custom.js', 'text/javascript');
-echo "\n";
-echo '</body>';
-echo "\n";
-echo '</html>';
+<!-- Basic -->
+<meta charset="utf-8">
+<title>Porto - Responsive HTML5 Template - 2.5.0</title>
+<meta name="keywords" content="HTML5 Template" />
+<meta name="description" content="Porto - Responsive HTML5 Template - 2.5.0">
+<meta name="author" content="okler.net">
+<!-- Mobile Metas -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php
+echo $this->partial('layout/top_scripts', array('myvar' => 'myval'));
 ?>
+</head>
+<body>
+<div class="body">
+<?php
+echo $this->partial('layout/header', array('myvar' => 'myval'));
+echo $this->layout()->content;
+echo $this->partial('layout/footer', array('myvar' => 'myval'));
+echo $this->partial('layout/bottom_scripts', array('myvar' => 'myval'));
+?>
+</div>
+</body>
+</html>

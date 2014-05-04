@@ -1,7 +1,26 @@
+<?php
+unset($active);
+$active = array();
+    switch ($this->layout()->activeMenuTab){
+        case 'index':
+            $active['index']= 'active';
+            break;
+        case 'contactus':
+            $active['contactus']= 'active';
+            break;
+        case 'portfolio':
+            $active['portfolio']= 'active';
+            break;
+        default:
+            unset($active);
+            $active['index']= 'active';
+            break;
+    }
+?>
 <header>
     <div class="container">
         <h1 class="logo">
-            <a href="index.html">
+            <a href="/">
                 <img alt="Porto" src="img/logo.png">
             </a>
         </h1>
@@ -21,7 +40,7 @@
                     <a href="about-us.html"><i class="icon icon-angle-right"></i>About Us</a>
                 </li>
                 <li>
-                    <a href="contact-us.html"><i class="icon icon-angle-right"></i>Contact Us</a>
+                    <a href="contactus"><i class="icon icon-angle-right"></i>Contact Us</a>
                 </li>
                 <li class="phone">
                     <span><i class="icon icon-phone"></i>(123) 456-7890</span>
@@ -43,8 +62,8 @@
             </div>
             <nav class="nav-main mega-menu">
                 <ul class="nav nav-pills nav-main" id="mainMenu">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="#">
+                    <li class="dropdown <?php echo isset($active['index'])?$active['index']:null;?>">
+                        <a class="dropdown-toggle" href="/">
                             Home
                             <i class="icon icon-angle-down"></i>
                         </a>
@@ -146,8 +165,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="#">
+                    <li class="dropdown <?php echo isset($active['portfolio'])?$active['portfolio']:null; ?>">
+                        <a class="dropdown-toggle" href="portfolio">
                             Portfolio
                             <i class="icon icon-angle-down"></i>
                         </a>
@@ -160,7 +179,7 @@
                             <li><a href="portfolio-single-project.html">Single Project</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a class="dropdown-toggle" href="#">
                             Pages
                             <i class="icon icon-angle-down"></i>
@@ -178,8 +197,8 @@
                             <li><a href="sitemap.html">Sitemap</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="#">
+                    <li class="dropdown <?php echo isset($active['contactus'])?$active['contactus']:null;?>">
+                        <a class="dropdown-toggle" href="contactus">
                             Contact Us
                             <i class="icon icon-angle-down"></i>
                         </a>
