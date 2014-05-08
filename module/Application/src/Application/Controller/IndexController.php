@@ -18,4 +18,14 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
+
+    public function aboutusAction(){
+        $this->layout()->setVariable('activeMenuTab', 'aboutus');
+        return new ViewModel();
+    }
+
+    public function portfolioAction(){
+        $this->layout()->setVariable('activeMenuTab', 'portfolio');
+        return new ViewModel();
+    }
 }

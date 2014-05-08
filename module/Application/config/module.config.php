@@ -6,8 +6,13 @@
  * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-
 return array(
+    'controllers' => array(
+        'invokables' => array(
+            'Application\Controller\Index' => 'Application\Controller\IndexController'
+        ),
+    ),
+
     'router' => array(
         'routes' => array(
             'home' => array(
@@ -18,6 +23,7 @@ return array(
                         'controller' => 'Application\Controller\Index',
                         'action'     => 'index',
                     ),
+
                 ),
             ),
             // The following is a route to simplify getting started creating
@@ -50,6 +56,34 @@ return array(
                     ),
                 ),
             ),
+
+            'aboutus' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/aboutus',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'aboutus',
+                    ),
+                ),
+
+            ),
+
+            'portfolio' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/portfolio',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Application\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'portfolio',
+                    ),
+                ),
+
+            ),
+
+
         ),
     ),
     'service_manager' => array(
@@ -71,11 +105,7 @@ return array(
             ),
         ),
     ),
-    'controllers' => array(
-        'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
-        ),
-    ),
+
     'view_manager' => array(
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
@@ -91,6 +121,7 @@ return array(
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
+
     ),
     // Placeholder for console routes
     'console' => array(

@@ -2,27 +2,24 @@
 <!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
 <!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
 <!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
-<head>
-<!-- Basic -->
-<meta charset="utf-8">
-<title>Porto - Responsive HTML5 Template - 2.5.0</title>
-<meta name="keywords" content="HTML5 Template" />
-<meta name="description" content="Porto - Responsive HTML5 Template - 2.5.0">
-<meta name="author" content="okler.net">
-<!-- Mobile Metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--
+Author: Jon Toshmatov
+Server: Zend Engine
+Framework: Zend Framework 2x
+Location: Tampa, Florida
+-->
 <?php
+echo "<head>\n";
+echo $this->partial('layout/meta_tags', array('myvar' => 'myval'));
 echo $this->partial('layout/top_scripts', array('myvar' => 'myval'));
-?>
-</head>
-<body>
-<div class="body">
-<?php
-echo $this->partial('layout/header', array('myvar' => 'myval'));
+echo "</head>\n";
+echo "<body>\n";
+echo '<div class="body">';
+echo "\n".$this->partial('layout/header', array('myvar' => 'myval'));
 echo $this->layout()->content;
 echo $this->partial('layout/footer', array('myvar' => 'myval'));
 echo $this->partial('layout/bottom_scripts', array('myvar' => 'myval'));
+echo "\n</div>\n";
+echo "</body>\n";
+echo "</html>";
 ?>
-</div>
-</body>
-</html>
