@@ -418,9 +418,42 @@ Version: 		2.5.0 - Sun Feb 02 2014 13:41:58
 		newsletter: function() {
 
 			$("#newsletterForm").validate({
+
 				submitHandler: function(form) {
 
-					$.ajax({
+                    var request = $.ajax({
+                        url: $("#newsletterForm").attr("action"),
+                        type: "POST",
+                        data: {
+                            "email": $("#newsletterForm #email").val()
+                        },
+                        dataType: "html"
+                    });
+                    request.done(function( msg ) {
+                        alert(msg);
+                        $("#newsletterSuccess").removeClass("hidden");
+                        $("#newsletterError").addClass("hidden");
+
+                        $("#newsletterForm #email")
+                            .val("")
+                            .blur()
+                            .closest(".control-group")
+                            .removeClass("success")
+                            .removeClass("error");
+                    });
+                    request.fail(function( jqXHR, textStatus ) {
+                        $("#newsletterError").html(data.message);
+                        $("#newsletterError").removeClass("hidden");
+                        $("#newsletterSuccess").addClass("hidden");
+
+                        $("#newsletterForm #email")
+                            .blur()
+                            .closest(".control-group")
+                            .removeClass("success")
+                            .addClass("error");
+                    });
+
+					/*$.ajax({
 						type: "POST",
 						url: $("#newsletterForm").attr("action"),
 						data: {
@@ -428,8 +461,8 @@ Version: 		2.5.0 - Sun Feb 02 2014 13:41:58
 						},
 						dataType: "json",
 						success: function (data) {
+                            console.log("sdfafasf");
 							if (data.response == "success") {
-
 								$("#newsletterSuccess").removeClass("hidden");
 								$("#newsletterError").addClass("hidden");
 
@@ -454,7 +487,7 @@ Version: 		2.5.0 - Sun Feb 02 2014 13:41:58
 
 							}
 						}
-					});
+					});*/
 
 				},
 				rules: {

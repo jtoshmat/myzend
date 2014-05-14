@@ -28,4 +28,9 @@ class IndexController extends AbstractActionController
         $this->layout()->setVariable('activeMenuTab', 'portfolio');
         return new ViewModel();
     }
+
+    public function subscribeAction(){
+        $this->layout()->setTemplate('layout/ajax');
+        return array('email'=>'success');
+    }
 }

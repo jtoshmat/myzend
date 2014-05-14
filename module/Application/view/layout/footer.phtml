@@ -15,7 +15,7 @@
 
                     <div class="alert alert-danger hidden" id="newsletterError"></div>
 
-                    <form id="newsletterForm" action="php/newsletter-subscribe.php" method="POST">
+                    <form id="newsletterForm" action="<?php echo $this->url();?>addnewsletter" method="POST">
                         <div class="input-group">
                             <input class="form-control" placeholder="Email Address" name="email" id="email" type="text">
 										<span class="input-group-btn">

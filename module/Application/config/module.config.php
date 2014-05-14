@@ -70,14 +70,14 @@ return array(
 
             ),
 
-            'portfolio' => array(
+            'subscribe' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/portfolio',
+                    'route'    => '/subscribe',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Application\Controller',
                         'controller'    => 'Index',
-                        'action'        => 'portfolio',
+                        'action'        => 'subscribe',
                     ),
                 ),
 
