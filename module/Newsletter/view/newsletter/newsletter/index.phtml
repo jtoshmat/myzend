@@ -1,19 +1,16 @@
-<div class="newsletter">
-    <h4>Newsletter</h4>
-    <p>Keep up on our always evolving product features and technology. Enter your e-mail and subscribe to our newsletter.</p>
+<?php
+$form->setAttribute('action', $this->url('newsletter', array('action' => 'index')));
+$form->setAttribute('id','newsletterForm');
+$form->setAttribute('novalidate','novalidate');
+$form->prepare();
+echo $this->form()->openTag($form);
 
-    <div class="alert alert-success hidden" id="newsletterSuccess">
-        <strong>Success!</strong> You've been added to our email list.
-    </div>
+echo "<div class='input-group'>";
+echo $this->formRow($form->get('email')->setAttribute('class','form-control')->setAttribute('label',''));
+echo "<span class='input-group-btn'>";
+echo $this->formSubmit($form->get('submit')->setAttribute('class','btn btn-default'));
+echo "</span>";
+echo "</div>";
 
-    <div class="alert alert-danger hidden" id="newsletterError"></div>
-
-    <form id="newsletterForm" action="php/newsletter-subscribe.php" method="POST">
-        <div class="input-group">
-            <input class="form-control" placeholder="Email Address" name="email" id="email" type="text">
-										<span class="input-group-btn">
-											<button class="btn btn-default" type="submit">Go!</button>
-										</span>
-        </div>
-    </form>
-</div>
+echo $this->form()->closeTag();
+?>

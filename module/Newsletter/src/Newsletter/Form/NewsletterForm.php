@@ -11,24 +11,40 @@ class NewsletterForm extends Form
         parent::__construct('newsletter');
 
         $this->add(array(
-            'name' => 'id',
+            'name' => 'userid',
             'type' => 'Hidden',
             'class' => 'hidden',
         ));
+
+
         $this->add(array(
-            'name' => 'country',
+            'name' => 'email',
+            'required' => true,
             'type' => 'Text',
             'options' => array(
-                'label' => 'Country',
+                'label' => '',
             ),
             'attributes' => array(
-                'value' => '',
-                'required' => true,
-                'class'=> 'text',
-                'id' => 'country',
+                'required' => 'required',
+                'id' => 'email',
+                'placeholder' => 'Email Address',
             ),
-            'validators' => array(
-                array('validator' => 'StringLength', 'options' => array(10, 20))
+        ));
+
+        $this->add(array(
+            'name' => 'remove',
+            'type' => 'Checkbox',
+            'options' => array(
+                'label' => 'Remove my email:',
+
+            ),
+            'attributes' => array(
+
+                'id' => 'remove',
+                'placeholder' => '',
+                'value' => '',
+                'checked' => false,
+
             ),
         ));
 

@@ -416,33 +416,43 @@ Version: 		2.5.0 - Sun Feb 02 2014 13:41:58
 		},
 
 		newsletter: function() {
-
 			$("#newsletterForm").validate({
-
-				submitHandler: function(form) {
-
-                    var request = $.ajax({
+    			submitHandler: function(form) {
+                 var request = $.ajax({
                         url: $("#newsletterForm").attr("action"),
                         type: "POST",
                         data: {
-                            "email": $("#newsletterForm #email").val()
+                            "email": $("#newsletterForm #email").val(),
+                            "remove": $("#newsletterForm #remove").prop("checked")
                         },
                         dataType: "html"
                     });
-                    request.done(function( msg ) {
-                        alert(msg);
-                        $("#newsletterSuccess").removeClass("hidden");
-                        $("#newsletterError").addClass("hidden");
+                    request.done(function( msg, textStatus ) {
+                      if (msg['code']==1){
+                          $("#newsletterSuccess").html('Updated');
+                            $("#newsletterSuccess").removeClass("hidden");
+                            $("#newsletterError").addClass("hidden");
+                            $("#newsletterForm #email")
+                                .val("")
+                                .blur()
+                                .closest(".control-group")
+                                .removeClass("success")
+                                .removeClass("error");
+                      }else{
+                          $("#newsletterError").html(msg['message']);
+                          $("#newsletterError").removeClass("hidden");
+                          $("#newsletterSuccess").addClass("hidden");
 
-                        $("#newsletterForm #email")
-                            .val("")
-                            .blur()
-                            .closest(".control-group")
-                            .removeClass("success")
-                            .removeClass("error");
-                    });
+                          $("#newsletterForm #email")
+                              .blur()
+                              .closest(".control-group")
+                              .removeClass("success")
+                              .addClass("error");
+                      }
+                        });
+
                     request.fail(function( jqXHR, textStatus ) {
-                        $("#newsletterError").html(data.message);
+                        $("#newsletterError").html(textStatus);
                         $("#newsletterError").removeClass("hidden");
                         $("#newsletterSuccess").addClass("hidden");
 

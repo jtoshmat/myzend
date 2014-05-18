@@ -15,14 +15,19 @@
 
                     <div class="alert alert-danger hidden" id="newsletterError"></div>
 
-                    <form id="newsletterForm" action="<?php echo $this->url();?>addnewsletter" method="POST">
-                        <div class="input-group">
-                            <input class="form-control" placeholder="Email Address" name="email" id="email" type="text">
-										<span class="input-group-btn">
-											<button class="btn btn-default" type="submit">Go!</button>
-										</span>
-                        </div>
-                    </form>
+
+
+
+                    <?php
+                    echo "my email form";
+                    $form->setAttribute('action', $this->url('newsletter', array('action' => 'add')));
+                    $form->prepare();
+                    echo $this->form()->openTag($form);
+                    echo $this->formRow($form->get('email'));
+                    echo $this->formSubmit($form->get('submit'));
+                    echo $this->form()->closeTag();
+                    ?>
+
                 </div>
             </div>
             <div class="col-md-3">
