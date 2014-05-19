@@ -5,7 +5,7 @@ use Zend\View\Model\ViewModel;
 use Newsletter\Model\Newsletter;          // <-- Add this import
 use Newsletter\Form\NewsletterForm;       // <-- Add this import
 use Zend\Form\Element;
-
+use Zend\View\Model\JsonModel;
 class NewsletterController extends AbstractActionController
 {
     public function indexAction()
@@ -27,10 +27,12 @@ class NewsletterController extends AbstractActionController
             $email = strip_tags($data['email']);
             $email = trim($email);
           if ($data['remove'] === 'true'){
-              print_r($model->unsubscribe($email));
+              $response = $model->unsubscribe($email);
+              print_r($response);
               return false;
           }else{
-              print_r($model->subscribe($email));
+              $response = $model->subscribe($email);
+              print_r($response);
               return false;
           }
         }else{

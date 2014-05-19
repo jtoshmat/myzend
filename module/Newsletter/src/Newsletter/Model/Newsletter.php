@@ -3,6 +3,7 @@ namespace Newsletter\Model;
 
 use Zend\Db\Adapter\Adapter;
 use Application\Model\MYSQLDB;
+use Zend\View\Model\JsonModel;
 class Newsletter extends MYSQLDB
 {
     public $email;
@@ -143,30 +144,30 @@ class Newsletter extends MYSQLDB
 
         if ($result['email_address']===$this->email && $result['subscribe']==1){
             //Do nothing, because email is already registered and active
-            return array('code'=>0,'message'=>'Your email is already registered and active');
+            return 'Your email is already registered and active';
         }else{
             if ($result['email_address']===$this->email && $result['subscribe']==0){
                 //email registered but not active
                 $code = $this->update(1);
-                return array('code'=>$code,'message'=>'Your email has been activated');
+                return 'Your email has been activated';
             }
             if ($result['email_address']!==$this->email){
                 //email is not registered
                 $code = $this->insert();
-                return array('code'=>$code,'message'=>'Your email has been subscribed');
+                return 'Your email has been subscribed';
             }
         }
     }
 
     public function unsubscribe($email){
         $result = $this->checkForDuplicate($email);
-        if (!$result){return array('code'=>0,'message'=>'Your email is not found');}
+        if (!$result){return 'Your email is not found';}
         else{
             if ($result['email_address']===$this->email && $result['subscribe']==1){
                 $code = $this->update(0);
-                return array('code'=>$code,'message'=>'Your email has been unsubscribed');
+                return 'Your email has been unsubscribed';
             }else{
-                return array('code'=>0,'message'=>'Subscription updated');
+                return 'Subscription updated';
             }
         }
     }

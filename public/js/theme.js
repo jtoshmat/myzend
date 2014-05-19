@@ -415,115 +415,41 @@ Version: 		2.5.0 - Sun Feb 02 2014 13:41:58
 
 		},
 
-		newsletter: function() {
-			$("#newsletterForm").validate({
-    			submitHandler: function(form) {
-                 var request = $.ajax({
-                        url: $("#newsletterForm").attr("action"),
+
+
+        newsletter: function() {
+
+            $("#newsletterForm").validate({
+                submitHandler: function(form) {
+
+                    var request = $.ajax({
                         type: "POST",
+                        url: $("#newsletterForm").attr("action"),
                         data: {
                             "email": $("#newsletterForm #email").val(),
                             "remove": $("#newsletterForm #remove").prop("checked")
-                        },
-                        dataType: "html"
-                    });
-                    request.done(function( msg, textStatus ) {
-                      if (msg['code']==1){
-                          $("#newsletterSuccess").html('Updated');
-                            $("#newsletterSuccess").removeClass("hidden");
-                            $("#newsletterError").addClass("hidden");
-                            $("#newsletterForm #email")
-                                .val("")
-                                .blur()
-                                .closest(".control-group")
-                                .removeClass("success")
-                                .removeClass("error");
-                      }else{
-                          $("#newsletterError").html(msg['message']);
-                          $("#newsletterError").removeClass("hidden");
-                          $("#newsletterSuccess").addClass("hidden");
-
-                          $("#newsletterForm #email")
-                              .blur()
-                              .closest(".control-group")
-                              .removeClass("success")
-                              .addClass("error");
-                      }
+                            }
                         });
-
+                        request.done(function(msg) {
+                            $("#newsletterSuccess").removeClass('hidden');
+                            $("#newsletterError").addClass('hidden');
+                            $("#newsletterSuccess").html(msg);
+                        });
                     request.fail(function( jqXHR, textStatus ) {
                         $("#newsletterError").html(textStatus);
-                        $("#newsletterError").removeClass("hidden");
-                        $("#newsletterSuccess").addClass("hidden");
-
-                        $("#newsletterForm #email")
-                            .blur()
-                            .closest(".control-group")
-                            .removeClass("success")
-                            .addClass("error");
+                        $("#newsletterSuccess").addClass('hidden');
+                        $("#newsletterError").removeClass('hidden');
                     });
 
-					/*$.ajax({
-						type: "POST",
-						url: $("#newsletterForm").attr("action"),
-						data: {
-							"email": $("#newsletterForm #email").val()
-						},
-						dataType: "json",
-						success: function (data) {
-                            console.log("sdfafasf");
-							if (data.response == "success") {
-								$("#newsletterSuccess").removeClass("hidden");
-								$("#newsletterError").addClass("hidden");
 
-								$("#newsletterForm #email")
-									.val("")
-									.blur()
-									.closest(".control-group")
-									.removeClass("success")
-									.removeClass("error");
 
-							} else {
 
-								$("#newsletterError").html(data.message);
-								$("#newsletterError").removeClass("hidden");
-								$("#newsletterSuccess").addClass("hidden");
+                }
 
-								$("#newsletterForm #email")
-									.blur()
-									.closest(".control-group")
-									.removeClass("success")
-									.addClass("error");
 
-							}
-						}
-					});*/
+            });
 
-				},
-				rules: {
-					email: {
-						required: true,
-						email: true
-					}
-				},
-	            errorPlacement: function(error, element) {
-
-	            },
-				highlight: function (element) {
-					$(element)
-						.closest(".control-group")
-						.removeClass("success")
-						.addClass("error");
-				},
-				success: function (element) {
-					$(element)
-						.closest(".control-group")
-						.removeClass("error")
-						.addClass("success");
-				}
-			});
-
-		},
+        },
 
 		featuredBoxes: function() {
 
