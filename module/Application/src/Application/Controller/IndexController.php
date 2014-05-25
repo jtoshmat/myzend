@@ -16,31 +16,34 @@ use Newsletter\Form\NewsletterForm;
 
 class IndexController extends AbstractActionController
 {
+    protected $newsletterForm;
+    public function __construct(){
+        $this->newsletterForm = new NewsletterForm();
+    }
+
     public function indexAction()
     {
         $this->getRequest();
         $email = $this->params()->fromRoute('email');
-        echo $email;
-        $form = new NewsletterForm();
-        $this->layout()->setVariable('form',$form);
-
+        $this->layout()->setVariable('form',$this->newsletterForm);
         $is_email_valid = preg_match('#^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{1,1})+$#','jon@toshmatov.us');
-          echo $is_email_valid;
-            return false;
         return new ViewModel();
     }
 
     public function aboutusAction(){
+        $this->layout()->setVariable('form',$this->newsletterForm);
         $this->layout()->setVariable('activeMenuTab', 'aboutus');
         return new ViewModel();
     }
 
     public function portfolioAction(){
+        $this->layout()->setVariable('form',$this->newsletterForm);
         $this->layout()->setVariable('activeMenuTab', 'portfolio');
         return new ViewModel();
     }
 
     public function subscribeAction(){
+        $this->layout()->setVariable('form',$this->newsletterForm);
         $this->layout()->setTemplate('layout/ajax');
         return array('email'=>'success');
     }

@@ -1,3 +1,16 @@
+<style type="text/css">
+    #newsletterForm label.error{
+        position: absolute !important;
+        top:100px;
+        left:100px;
+        color: #0000FF;
+        font-size: 0.9em;
+        margin-top: -5px;
+        padding: 0;
+        display: none;
+    }
+
+</style>
 <?php
 $form->setAttribute('action', $this->url('newsletter', array('action' => 'index')));
 $form->setAttribute('id','newsletterForm');

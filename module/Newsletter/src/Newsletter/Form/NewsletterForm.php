@@ -20,7 +20,7 @@ class NewsletterForm extends Form
         $this->add(array(
             'name' => 'email',
             'required' => true,
-            'type' => 'Text',
+            'type' => 'Email',
             'options' => array(
                 'label' => '',
             ),
@@ -28,6 +28,7 @@ class NewsletterForm extends Form
                 'required' => 'required',
                 'id' => 'email',
                 'placeholder' => 'Email Address',
+                'required' => 'required'
             ),
         ));
 

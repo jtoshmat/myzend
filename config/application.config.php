@@ -11,7 +11,8 @@ return array(
         'Contactus',
         'Newsletter',
         'Guestbook',
-        'Portfolio'
+        'Portfolio',
+        'Login'
     ),
     'module_listener_options' => array(
         'module_paths' => array(
