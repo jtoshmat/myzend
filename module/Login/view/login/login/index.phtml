@@ -1,0 +1,11 @@
+<?php
+$loginForm->setAttribute('action', $this->url('login', array('action' => 'index')));
+$loginForm->setAttribute('id','loginForm');
+//$loginForm->setAttribute('novalidate','novalidate');
+$loginForm->prepare();
+echo $this->form()->openTag($loginForm);
+echo $this->formRow($loginForm->get('email'));
+echo $this->formRow($loginForm->get('password'));
+echo $this->formSubmit($loginForm->get('submit'));
+echo $this->form()->closeTag();
+?>

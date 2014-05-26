@@ -21,6 +21,9 @@
 
                     </style>
 
+                    <?php
+                    if (isset($form)){
+                    ?>
                     <h4>Newsletter</h4>
                     <p>Keep up on our always evolving product features and technology. Enter your e-mail and subscribe to our newsletter.</p>
 
@@ -30,22 +33,24 @@
 
                     <div class="alert alert-danger hidden" id="newsletterError"></div>
                     <?php
-                    $form->setAttribute('action', $this->url('newsletter', array('action' => 'add')));
-                    $form->setAttribute('id','newsletterForm');
-                    $form->setAttribute('novalidate','novalidate');
-                    $form->prepare();
-                    echo $this->form()->openTag($form);
-                    echo $this->formRow($form->get('remove'));
-                        echo "<div class='input-group'>";
-                            echo $this->formRow($form->get('email')->setAttribute('class','form-control')->setAttribute('label',''));
 
-                            echo "<span class='input-group-btn'>";
-                                echo $this->formSubmit($form->get('submit')->setAttribute('class','btn btn-default'));
-                            echo "</span>";
+                        $form->setAttribute('action', $this->url('newsletter', array('action' => 'add')));
+                        $form->setAttribute('id','newsletterForm');
+                        //$form->setAttribute('novalidate','novalidate');
+                        $form->prepare();
+                        echo $this->form()->openTag($form);
+                        echo $this->formRow($form->get('remove'));
+                            echo "<div class='input-group'>";
+                                echo $this->formRow($form->get('email')->setAttribute('class','form-control')->setAttribute('label',''));
 
-                        echo "</div>";
+                                echo "<span class='input-group-btn'>";
+                                    echo $this->formSubmit($form->get('submit')->setAttribute('class','btn btn-default'));
+                                echo "</span>";
 
-                    echo $this->form()->closeTag();
+                            echo "</div>";
+
+                        echo $this->form()->closeTag();
+                    }
                     ?>
 
                 </div>
